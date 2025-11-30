@@ -1,0 +1,274 @@
+
+.anime {
+    width: 40%;          /* scales with screen */
+    max-width: 150px;    /* prevents it from getting too big */
+    border-radius: 50%;
+    margin:0;
+object-fit: cover;  /* ensures it covers the area */
+    opacity: 1;          /* make it visible */
+}
+.anime1 {
+    width: 50%;          /* scales with screen */
+    max-width: 150px;    /* prevents it from getting too big */
+    border-radius: 50%;
+    margin:0;  
+object-fit: cover;  /* ensures it covers the area */
+    opacity: 1;    
+    align-items: center;  
+    border: 2px solid #555;    /* make it visible */ 
+}
+
+#e1, #e2 {
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgb(30, 40, 221);
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* Removed large auto margins to let justify-content work */
+    margin: 0 10px; 
+}
+#header {
+    background-color: black; /* Solid black background */
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Keeps everything centered */
+    gap: 20px; /* Space between the left text, image, and right text */
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 4px solid #333;
+    flex-wrap: wrap; /* Allows stacking on mobile */
+}
+
+/* Common style for left and right panels */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 100, 255, 0.8);
+    flex: 1; /* Allows them to take up available space */
+    max-width: 200px; /* Prevents them from getting too wide */
+    text-align: center;
+}
+
+/* The middle image container */
+#center-visual {
+    flex: 2; /* Gives the image priority space */
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.poster-img {
+    width: 100%;
+    height: auto;
+    max-height: 280px; /* Keeps it from getting too tall */
+    object-fit: contain;
+    border: 2px solid #555; /* Optional frame */
+}
+#small-text{
+    font-weight: 600;
+}
+
+#K1{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 120px; */
+
+}
+#K2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('white.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#para{
+   max-width:600px;
+   width: 100%;
+    margin-top: 15px;
+    text-align: center;
+    font-weight:600;
+    text-shadow: 1px 1px 2px white;
+    color: rgb(1, 18, 5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#K3 {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items vertically center */
+}
+
+#I1 {
+    height: 44px; /* Explicit height */
+    width: 200px;
+    border: 2px solid black;
+    border-right: none; /* Merge with button */
+    border-radius: 5px 0 0 5px;
+    padding: 0 10px;
+    font-size: 16px;
+    box-sizing: border-box; /* Includes border in height calculation */
+    outline: none;
+}
+
+#B1 {
+    height: 44px; /* Must match Input height */
+    width: 50px;
+    border: 2px solid black;
+    border-radius: 0 5px 5px 0;
+    background-color: rgb(237, 30, 30);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Includes border in height calculation */
+}
+#B1:active {
+    background-color: rgb(200, 20, 20);
+}
+#para2{
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px whitesmoke;
+}
+#para3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: small;
+    color: rgb(1, 18, 5);
+text-shadow: 1px 1px 2px white;
+    font-weight: 800;
+}
+#B2 {
+    background: linear-gradient(135deg, #0052cc, #00b4d8); /* Cleaner Blue Gradient */
+    margin: 30px auto 0; /* Adds spacing above button */
+    padding: 12px 30px; /* Better sizing */
+    width: auto; /* Let width fit the text */
+    height: auto;
+    display: block;
+    color: white; /* CRITICAL: White text for readability */
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4); /* Glow effect */
+    transition: transform 0.2s ease;
+}
+
+#B2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 82, 204, 0.6);
+}
+
+#footer { 
+    text-align: center; 
+    margin: 40px 0 20px; 
+    color: #888; 
+    font-size: 0.9rem;}
+/* Add this to your existing CSS */
+.loading-panel, .output-panel {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2rem;
+}
+.output-panel {
+    padding: 20px;
+    
+}
+.image {
+    width: 150px;
+    animation: spin 2s infinite linear;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@media screen and (max-width: 600px) {
+    #para {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 768px) {
+    #header {
+        flex-direction: column; /* Stack top to bottom */
+        height: auto;
+        padding-bottom: 40px;
+    }
+    
+    #center-visual {
+        order: -1; /* Puts the main image at the very top on mobile */
+        margin-bottom: 20px;
+    }
+    .side-panel {
+        max-width: none; /* Allow full width */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+.prediction-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 5px solid #000; /* Adds a cool accent bar on the left */
+    background-color: rgba(0,0,0,0.05); /* Slight grey background */
+    width: 100%;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- SALT SPLASH ANIMATION --- */
+.salt-grain {
+    position: fixed; /* Stays on screen regardless of scroll */
+    top: -20px;      /* Start above the screen */
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%; /* Make it round-ish */
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Tiny shadow for depth */
+    pointer-events: none; /* Clicks go through the salt */
+    z-index: 9999;        /* On top of everything */
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg); /* Fall past bottom */
+        opacity: 0;
+    }
+}

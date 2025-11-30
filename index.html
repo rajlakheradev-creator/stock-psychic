@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictor</title>
+    <link rel="stylesheet" href="/src/report.css">
+    
+    <script type="importmap">
+  {
+    "imports": {
+      "openai": "https://cdn.jsdelivr.net/npm/openai@4.55.0/+esm"
+    }
+  }
+</script>
+</head>
+<body>
+
+  <header id="header">
+    
+    <div id="e1" class="side-panel">
+      <img class="anime" src="reigen.jpg" alt="Reigen">
+      <h2 id="small-text">Stock Predictions By</h2>
+    </div>
+
+    <div id="center-visual">
+       <img src="fraud.png" alt="Reigen Main" class="poster-img">
+    </div>
+
+    <div id="e2" class="side-panel">
+      <img class="anime" src="reigen.jpg" alt="Reigen">
+      <h1 id="K1">Arataka Reigen's</h1>
+    </div>
+
+  </header>
+  
+  <main id="K2">
+    
+    <div class="action-panel">
+        <p id="para">
+            Add up to 3 stock tickers below to get a super accurate stock Predictions report⚡
+        </p>
+
+        <div id="K3">
+
+            <input id="I1" title="box" type="text" placeholder="MSFT">
+            <button id="B1" type="button">👊</button>
+        </div>
+
+        <p id="para2">Your tickers will appear here...</p>
+        
+        <div id="list"></div>
+        
+        <button title="generate" id="B2">Generate Report</button>
+        <p id="para3">Always correct 15% of time</p>
+
+    </div>
+
+    <div class="loading-panel" >
+        <img  title="manga character"  src="stockmarket.gif" class="image" >
+        <p id="api-msg">Contacting Spirits...</p>
+    </div>
+
+    <div class="output-panel" >
+        <h2>The Spirits Have Spoken <img src="image.png" alt=" an success image" class="anime1"></h2>
+        
+        </div>
+
+  </main>
+  
+  <footer id="footer">
+      © Made by Raj-dev 
+  </footer>
+
+<script type="module" src="/src/report.js"></script>
+</body>
+</html>
