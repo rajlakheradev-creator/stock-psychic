@@ -15,8 +15,8 @@ const outputPanel = document.querySelector('.output-panel');
 
 // 🔴 1. API KEYS
 // THIS IS CORRECT
-const polygonApiKey = import.meta.env.VITE_POLYGON_KEY;
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_KEY;
+const polygonApiKey = import.meta.env.VITE_api_polygon;
+const GROQ_API_KEY = import.meta.env.VITE_api_groq;
 
 genbtn.disabled = true; 
 const punchSound = new Audio('punch.mp3'); // Make sure punch.mp3 is in your folder
