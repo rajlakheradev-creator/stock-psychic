@@ -1,4 +1,6 @@
-
+body{
+    size: 2000rem;
+}
 .anime {
     width: 40%;          /* scales with screen */
     max-width: 150px;    /* prevents it from getting too big */
@@ -93,6 +95,8 @@ object-fit: cover;  /* ensures it covers the area */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    width: 100%;
+    min-height:100%;
 }
 #para{
    max-width:600px;
@@ -185,7 +189,10 @@ text-shadow: 1px 1px 2px white;
     text-align: center; 
     margin: 40px 0 20px; 
     color: #888; 
-    font-size: 0.9rem;}
+    font-size: 0.9rem;
+    
+}
+
 /* Add this to your existing CSS */
 .loading-panel, .output-panel {
     display: none;
@@ -289,3 +296,5 @@ text-shadow: 1px 1px 2px white;
         opacity: 0;
     }
 }
+
+
