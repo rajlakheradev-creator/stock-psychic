@@ -145,12 +145,36 @@ function renderReport(output) {
     loadingPanel.style.display = 'none';
     outputPanel.style.display = 'flex';
     performSaltSplash();
+
+    outputPanel.querySelectorAll('.prediction-text, .try-again-btn').forEach((item) => {
+        item.remove();
+    });
+
     const report = document.createElement('p');
     report.className = "prediction-text";
     report.style.color = getRandomDarkColor(); 
     report.innerText = output;
-    
+
+    const tryAgainBtn = document.createElement('button');
+    tryAgainBtn.type = 'button';
+    tryAgainBtn.className = 'try-again-btn';
+    tryAgainBtn.textContent = 'Try Other Stock';
+    tryAgainBtn.addEventListener('click', resetApp);
+
     outputPanel.appendChild(report);
+    outputPanel.appendChild(tryAgainBtn);
+}
+
+function resetApp() {
+    list_stock.length = 0;
+    stocksappear.innerHTML = '';
+    inputbox.value = '';
+    genbtn.disabled = true;
+    apiMsg.innerText = 'Contacting Spirits...';
+    para1.style.color = 'rgb(1, 18, 5)';
+    para1.textContent = 'Add up to 3 stock tickers below to get a super accurate stock Predictions report⚡';
+    outputPanel.style.display = 'none';
+    actionPanel.style.display = 'block';
 }
 
 function getRandomDarkColor() {
