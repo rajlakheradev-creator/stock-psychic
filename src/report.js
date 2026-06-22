@@ -19,7 +19,7 @@ const polygonApiKey = import.meta.env.VITE_api_polygon;
 const GROQ_API_KEY = import.meta.env.VITE_api_groq;
 
 genbtn.disabled = true; 
-const punchSound = new Audio('punch.mp3'); // Make sure punch.mp3 is in your folder
+const punchSound = new Audio('/media/punch.mp3');
 // Event Listeners
 genbtn.addEventListener('click', fetchStockdata);
 
