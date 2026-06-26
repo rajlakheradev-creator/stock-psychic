@@ -16,7 +16,6 @@ const outputPanel = document.querySelector('.output-panel');
 // 🔴 1. API KEYS
 // THIS IS CORRECT
 const polygonApiKey = import.meta.env.VITE_api_polygon;
-const GROQ_API_KEY = import.meta.env.VITE_api_groq;
 
 genbtn.disabled = true; 
 const punchSound = new Audio('/media/punch.mp3');
@@ -114,11 +113,10 @@ async function fetchReportData(stockDataString) {
     ];
 
     try {
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch('/api/groq', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${GROQ_API_KEY}` 
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 model: 'llama-3.3-70b-versatile', 
@@ -128,8 +126,8 @@ async function fetchReportData(stockDataString) {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Groq API Error: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || `Groq API Error: ${response.status}`);
         }
 
         const data = await response.json();
