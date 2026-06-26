@@ -19,6 +19,14 @@ const polygonApiKey = import.meta.env.VITE_api_polygon;
 
 genbtn.disabled = true; 
 const punchSound = new Audio('/media/punch.mp3');
+const loadingMusic = new Audio('/media/loading.m4a');
+loadingMusic.volume = 0.4;
+const loadingMusicStartAt = 5; // skip first 5 seconds
+
+loadingMusic.addEventListener('ended', () => {
+    loadingMusic.currentTime = loadingMusicStartAt;
+    loadingMusic.play().catch(e => console.log("Loading music couldn't replay automatically"));
+});
 // Event Listeners
 genbtn.addEventListener('click', fetchStockdata);
 
@@ -44,6 +52,7 @@ btn.addEventListener('click', (e) => {
     }
 });
 
+// Updates the visible ticker list from the current in-memory selections.
 function renderTickers() {
     stocksappear.innerHTML = '';
     list_stock.forEach((ticker) => {
@@ -56,10 +65,12 @@ function renderTickers() {
     });
 }
 
+// Fetches recent Polygon market data for each selected ticker, then starts report generation.
 async function fetchStockdata() {
     actionPanel.style.display = 'none'; 
     loadingPanel.style.display = 'flex';
-    
+    loadingMusic.currentTime = loadingMusicStartAt;
+    loadingMusic.play().catch(e => console.log("Loading music couldn't play automatically"));
     try {
         const stockdata = await Promise.all(list_stock.map(async (ticker) => {
             const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${dates.startDate}/${dates.endDate}?apiKey=${polygonApiKey}`;
@@ -84,6 +95,8 @@ async function fetchStockdata() {
         fetchReportData(validData.join('\n'));
 
     } catch (err) {
+        loadingMusic.pause();
+        loadingMusic.currentTime = 0;
         apiMsg.innerText = 'Error fetching stock data';
         console.error('error', err);
         // Reset UI on error
@@ -94,6 +107,7 @@ async function fetchStockdata() {
     }
 }
 
+// Sends the collected stock data to the server-side Groq proxy and renders the AI report.
 async function fetchReportData(stockDataString) {
     const messages = [
         {
@@ -139,7 +153,10 @@ async function fetchReportData(stockDataString) {
     }
 }
 
+// Replaces the loading state with the final prediction text and reset button.
 function renderReport(output) {
+    loadingMusic.pause();
+    loadingMusic.currentTime = 0;
     loadingPanel.style.display = 'none';
     outputPanel.style.display = 'flex';
     performSaltSplash();
@@ -163,6 +180,7 @@ function renderReport(output) {
     outputPanel.appendChild(tryAgainBtn);
 }
 
+// Clears all selections and returns the interface to its starting state.
 function resetApp() {
     list_stock.length = 0;
     stocksappear.innerHTML = '';
@@ -173,8 +191,11 @@ function resetApp() {
     para1.textContent = 'Add up to 3 stock tickers below to get a super accurate stock Predictions report⚡';
     outputPanel.style.display = 'none';
     actionPanel.style.display = 'block';
+    loadingMusic.pause();
+    loadingMusic.currentTime = 0;
 }
 
+// Generates a random dark-ish color for the prediction text.
 function getRandomDarkColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -184,6 +205,7 @@ function getRandomDarkColor() {
     return color;
 }
 /* --- NEW FEATURE: SALT SPLASH --- */
+// Creates the falling salt animation that plays when a report is shown.
 function performSaltSplash() {
     const saltCount = 80; // Number of grains
     
