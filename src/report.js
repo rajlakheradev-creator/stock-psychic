@@ -122,7 +122,6 @@ Style Guide:
 2. Be overconfident but vaguely nonsensical.
 3. Mention your "Special Moves" (Salt Splash, Sorcery Crush, etc.).
 4. You MUST return the report in EXACTLY FOUR HTML SECTIONS:
-
 <section id="pattern-detected">
   <h2>Pattern Detected</h2>
   {{pattern}}
@@ -142,6 +141,7 @@ Style Guide:
   <h2>Special Move</h2>
   {{move}}
 </section>
+
 
 Rules:
 - Do NOT add extra sections.
@@ -183,7 +183,7 @@ Rules:
         renderReport(`Reigen's Prediction: \n\n(Spirits are busy: ${err.message}) \n\n...but buy low, sell high!`);
     }
 }
-
+// 
 // Replaces the loading state with the final prediction text and reset button.
 function renderReport(output) {
     loadingMusic.pause();
@@ -196,7 +196,7 @@ function renderReport(output) {
         item.remove();
     });
 
-    const report = document.createElement('p');
+    const report = document.createElement('div');
     report.className = "prediction-text";
     report.style.color = getRandomDarkColor(); 
     report.innerText = output;
