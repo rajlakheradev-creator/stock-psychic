@@ -146,6 +146,8 @@ Style Guide:
 Rules:
 - Do NOT add extra sections.
 - Do NOT wrap everything inside one block.
+- Use normal HTML tags with straight quotes, like id="pattern-detected".
+- Do NOT use markdown code fences.
 - Replace {{pattern}}, {{advice}}, {{risk}}, {{move}} with your generated content.
 - Output ONLY valid HTML.
 `
@@ -199,7 +201,7 @@ function renderReport(output) {
     const report = document.createElement('div');
     report.className = "prediction-text";
     report.style.color = getRandomDarkColor(); 
-    report.innerText = output;
+    report.innerHTML = cleanReportHtml(output);
 
     const tryAgainBtn = document.createElement('button');
     tryAgainBtn.type = 'button';
@@ -209,6 +211,16 @@ function renderReport(output) {
 
     outputPanel.appendChild(report);
     outputPanel.appendChild(tryAgainBtn);
+}
+
+// Removes common AI formatting wrappers so the four report sections render as HTML.
+function cleanReportHtml(output) {
+    return output
+        .replace(/```html/gi, '')
+        .replace(/```/g, '')
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
+        .trim();
 }
 
 // Clears all selections and returns the interface to its starting state.
