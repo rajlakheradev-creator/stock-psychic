@@ -201,7 +201,7 @@ function renderReport(output) {
     const report = document.createElement('div');
     report.className = "prediction-text";
     report.style.color = getRandomDarkColor(); 
-    report.innerHTML = cleanReportHtml(output);
+    report.innerHTML = cleanReportHtmlForDisplay(output);
 
     const tryAgainBtn = document.createElement('button');
     tryAgainBtn.type = 'button';
@@ -220,6 +220,19 @@ function cleanReportHtml(output) {
         .replace(/```/g, '')
         .replace(/[“”]/g, '"')
         .replace(/[‘’]/g, "'")
+        .trim();
+}
+
+// Handles escaped HTML like &lt;section&gt; so it becomes real HTML on the page.
+function cleanReportHtmlForDisplay(output) {
+    return output
+        .replace(/```html/gi, '')
+        .replace(/```/g, '')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, '&')
         .trim();
 }
 
